@@ -20,7 +20,9 @@ services:
       - PORT=$WEB_PORT
     volumes:
       - ./web:/app
+      - yarn_cache:/usr/local/share/.cache/yarn/v1
     ports:
       - "${WEB_PORT}:${WEB_PORT}"
 volumes:
   bundle_cache:
+  yarn_cache:
