@@ -12,5 +12,16 @@ services:
       - bundle_cache:/usr/local/bundle
     ports:
       - "${API_PORT}:${API_PORT}"
+  web:
+    command: yarn start
+    build:
+      context: ./web
+    environment:
+      - PORT=$WEB_PORT
+      - API_PORT
+    volumes:
+      - ./web:/app
+    ports:
+      - "${WEB_PORT}:${WEB_PORT}"
 volumes:
   bundle_cache:
