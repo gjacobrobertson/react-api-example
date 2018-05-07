@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { Header, Statistic } from 'semantic-ui-react';
-
-const Item = ({ char, count }) => (
-  <Statistic>
-    <Statistic.Label>{char}</Statistic.Label>
-    <Statistic.Value>{count.toLocaleString()}</Statistic.Value>
-  </Statistic>
-);
+import FlipMove from 'react-flip-move';
+import FrequencyItem from './FrequencyItem';
 
 export default class Frequency extends Component {
   componentDidMount() {
-    this.props.build();
+    const { frequencies, build } = this.props;
+    if (Object.keys(frequencies).length === 0) {
+      build();
+    }
   }
 
   render() {
@@ -18,9 +16,9 @@ export default class Frequency extends Component {
     return (
       <React.Fragment>
         <Header as="h2">Frequency</Header>
-        <Statistic.Group size="mini">
+        <Statistic.Group size="mini" as={FlipMove}>
           {frequencies.map(([char, count]) => (
-            <Item key={char} char={char} count={count} />
+            <FrequencyItem key={char} char={char} count={count} />
           ))}
         </Statistic.Group>
       </React.Fragment>
