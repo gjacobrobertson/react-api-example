@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router';
 import { Container } from 'semantic-ui-react';
 import TopMenu from './TopMenu';
 import People from '../containers/People';
-import Frequency from './Frequency';
+import Frequency from '../containers/Frequency';
 import Duplicates from './Duplicates';
 
 const App = () => (

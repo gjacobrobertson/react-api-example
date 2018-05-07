@@ -1,16 +1,16 @@
 import { handleActions } from 'redux-actions';
-import * as peopleActions from '../actions/people';
+import * as actions from '../actions/people';
 
 const initial = { loaded: false };
 
 export default handleActions(
   {
-    [peopleActions.set]: (state, { payload }) => ({
+    [actions.set]: (state, { payload }) => ({
       ...state,
       ...payload,
       loaded: true,
     }),
-    [peopleActions.reset]: state => initial,
+    [actions.reset]: state => initial,
   },
   initial
 );
