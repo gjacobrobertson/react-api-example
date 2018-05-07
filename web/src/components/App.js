@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import { Container } from 'semantic-ui-react';
 import TopMenu from './TopMenu';
-import People from './People';
+import People from '../containers/People';
 import Frequency from './Frequency';
 import Duplicates from './Duplicates';
 

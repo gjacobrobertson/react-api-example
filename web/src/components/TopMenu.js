@@ -7,8 +7,8 @@ const menuStyle = {
 };
 
 const NavLink = ({ path, children }) => (
-  <Menu.Item active={window.location.pathname === path}>
-    <Link to={path}>{children}</Link>
+  <Menu.Item active={window.location.pathname === path} as={Link} to={path}>
+    {children}
   </Menu.Item>
 );
 

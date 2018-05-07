@@ -12,19 +12,20 @@ import {
 import 'semantic-ui-css/semantic.min.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import reducers from './reducers';
+import * as reducers from './reducers';
 
 const history = createBrowserHistory();
 const router = routerMiddleware(history);
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle
-const store = createStore(
-  combineReducers({
-    ...reducers,
-    router: routerReducer,
-  }),
-  composeEnhancers(applyMiddleware(router, thunk))
-);
+const reducer = combineReducers({
+  ...reducers,
+  router: routerReducer,
+});
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancer = composeEnhancers(applyMiddleware(router, thunk));
+
+const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>
