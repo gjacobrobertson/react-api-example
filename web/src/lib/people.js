@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-export async function* pages() {
+export const projection = person => ({
+  id: person.id,
+  name: person.display_name,
+  email: person.email_address,
+  title: person.title,
+});
+
+export async function* iteratePages() {
   let page = 1;
   do {
     const params = new URLSearchParams();
@@ -11,8 +18,8 @@ export async function* pages() {
   } while (page);
 }
 
-export async function* people() {
-  for await (const page of pages()) {
+export async function* iteratePeople() {
+  for await (const page of iteratePages()) {
     for (const person of page.data) {
       yield person;
     }

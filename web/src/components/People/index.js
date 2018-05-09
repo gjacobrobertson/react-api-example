@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Header, Item, Pagination } from 'semantic-ui-react';
-import Person from './Person';
+import { Header, Card, Pagination, Grid } from 'semantic-ui-react';
+import Person from '../Person';
 
 const PageItem = props => {
   const search = new URLSearchParams(props.from);
@@ -44,11 +44,21 @@ export default class People extends Component {
     return (
       <React.Fragment>
         <Header as="h2">People</Header>
-        {pagination}
-        <Item.Group divided>
-          {data.map(person => <Person key={person.id} data={person} />)}
-        </Item.Group>
-        {pagination}
+        <Grid columns={1}>
+          <Grid.Row>
+            <Grid.Column>{pagination}</Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <Card.Group>
+                {data.map(person => <Person key={person.id} {...person} />)}
+              </Card.Group>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>{pagination}</Grid.Column>
+          </Grid.Row>
+        </Grid>
       </React.Fragment>
     );
   }

@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 import TopMenu from './TopMenu';
 import People from '../containers/People';
 import Frequency from '../containers/Frequency';
-import Duplicates from './Duplicates';
+import Duplicates from '../containers/Duplicates';
 
 const App = () => (
   <React.Fragment>
