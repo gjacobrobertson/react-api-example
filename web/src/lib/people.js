@@ -7,21 +7,21 @@ export const projection = person => ({
   title: person.title,
 });
 
-export async function* iteratePages() {
+export async function eachPage(handler) {
   let page = 1;
   do {
     const params = new URLSearchParams();
     params.set('page', page);
     const { data } = await axios.get('/api/v2/people.json', { params });
-    yield data;
+    await handler(data);
     page = data.metadata.paging.next_page;
   } while (page);
 }
 
-export async function* iteratePeople() {
-  for await (const page of iteratePages()) {
+export function eachPerson(handler) {
+  return eachPage(async page => {
     for (const person of page.data) {
-      yield person;
+      await handler(person);
     }
-  }
+  });
 }
