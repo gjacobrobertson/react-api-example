@@ -1,9 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('App component', () => {
+  const app = shallow(<App />);
+
+  it('renders the TopMenu', () => {
+    expect(app.find('TopMenu')).toHaveLength(1);
+  });
+
+  it('renders the People Route', () => {
+    expect(app.find('Route').find({ path: '/' })).toHaveLength(1);
+  });
+
+  it('renders the Frequency Route', () => {
+    expect(app.find('Route').find({ path: '/frequency' })).toHaveLength(1);
+  });
+
+  it('renders the Duplicates Route', () => {
+    expect(app.find('Route').find({ path: '/duplicates' })).toHaveLength(1);
+  });
 });

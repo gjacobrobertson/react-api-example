@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Header, Card, Pagination, Grid } from 'semantic-ui-react';
 import Person from '../Person';
-
-const PageItem = props => {
-  const search = new URLSearchParams(props.from);
-  search.set('page', props.value);
-  return (
-    <Link {...props} to={{ search: `?${search}` }}>
-      {props.children}
-    </Link>
-  );
-};
+import PageItem from './PageItem';
 
 export default class People extends Component {
   componentDidUpdate(prevProps) {

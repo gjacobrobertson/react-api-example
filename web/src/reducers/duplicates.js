@@ -17,7 +17,7 @@ const fingerprint = str =>
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '');
 
-const threshold = 0.5;
+const threshold = 0.8;
 const shingleSize = 3;
 const shingler = shingle(shingleSize);
 const similarity = (a, b) => jaccard(shingler(a), shingler(b));
